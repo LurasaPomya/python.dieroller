@@ -5,17 +5,18 @@ application = Flask(__name__)
 
 @application.route('/')
 def hello():
-    return "<center>Hello</center>"
+    return "<center>Hello, DecRoller is a work in progress</center>"
 
-@application.route('/decroll/d6/<int:count>')
-def roll6(count):
-    if count > 100:
-        return "Too many! Lower your count"
-    else:
-        results = diefunctions.roll(6,count)
-        return "Rolled {}d6 for a total of {} \n".format(count,results[1]) 
+#@application.route('/decroll/d6/<int:count>')
+#def roll6(count):
+#    if count > 100:
+#        return "Too many! Lower your count"
+#    else:
+#        results = diefunctions.roll(6,count)
+#        return "Rolled {}d6 for a total of {} \n".format(count,results[1]) 
 
 @application.route('/decroll/<toroll>')
+@application.route('/decroller/<toroll>')
 def rollvariable(toroll):
     toroll = toroll.split('d')
     count = int(toroll[0])
