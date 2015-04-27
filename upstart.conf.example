@@ -1,0 +1,11 @@
+description "uWSGI server instance configured to serve decroller"
+
+start on runlevel [2345]
+stop on runlevel [!2345]
+
+setuid USERNAME
+setgid WEBUSERNAME
+
+env PATH=/PATH/TO/VENV
+chdir /PATH/TO/PROJECT/ROOT
+exec uwsgi --ini decroller.ini
